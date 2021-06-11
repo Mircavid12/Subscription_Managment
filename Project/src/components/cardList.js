@@ -40,31 +40,31 @@ const columns = [
     },
 ];
 
-function createData(card_name, card_number, type, expire_date) {
-    return { card_name, card_number, type, expire_date };
+function createData(id,card_name, card_number, type, expire_date) {
+    return { id,card_name, card_number, type, expire_date };
 }
 
 const rows = [
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Kapital Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Yelo Bank', '4169903245823475', 'Master', 3287263),
-    createData('Access Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Express Bank', '4169903245823475', 'Master', 3287263),
-    createData('Beynəlxalq Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
-    createData('Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("1",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("2",'Kapital Bank', '4169903245823475', 'Visa', 3287263),
+    createData("3",'Yelo Bank', '4169903245823475', 'Master', 3287263),
+    createData("4",'Access Bank', '4169903245823475', 'Visa', 3287263),
+    createData("5",'Express Bank', '4169903245823475', 'Master', 3287263),
+    createData("6",'Beynəlxalq Bank', '4169903245823475', 'Visa', 3287263),
+    createData("7",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("8",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("9",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("10",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("11",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("12",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("13",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("14",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("15",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("16",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("17",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("18",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("19",'Paşa Bank', '4169903245823475', 'Visa', 3287263),
+    createData("20",'Paşa Bank', '4169903245823475', 'Master', 3287263),
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -186,12 +186,17 @@ function CardList() {
                                         <label htmlFor="exampleInputEmail1" className="form-label">Card number</label>
                                         <input type="number" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
-                                    <label htmlFor="exampleInputEmail1" className="form-label">Type</label>
-                                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-
-                                    <div className="mb-3" style={{marginTop:'5px'}}>
-                                    <label htmlFor="exampleInputEmail1" className="form-label">Expire Date</label>
-                                    <br />
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleInputEmail1" className="form-label">Type</label>
+                                        <select class="form-select form-select-lg" style={{ padding: '6px', borderRadius: '3px', width: '100%', margin: '6px 0' }} aria-label=".form-select-lg example">
+                                            <option selected disabled>Select card type</option>
+                                            <option value="1">Visa</option>
+                                            <option value="2">Master Card</option>
+                                        </select>
+                                    </div>
+                                    <div className="mb-3" style={{ marginTop: '5px' }}>
+                                        <label htmlFor="exampleInputEmail1" className="form-label">Expire Date</label>
+                                        <br />
                                         <TextField
                                             id="date"
                                             type="date"
@@ -227,7 +232,8 @@ function CardList() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row,idx) => {
+                                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, idx) => {
+                                    {console.log(row)}
                                     return (
                                         <TableRow hover role="checkbox" tabIndex={-1} key={idx}>
                                             {columns.map((column) => {
@@ -240,7 +246,7 @@ function CardList() {
                                                 );
                                             })}
                                             <TableCell align='center'>
-                                                <Button variant="contained" color="primary" onClick={handleOpenEdit}>
+                                                <Button variant="contained" color="primary" onClick={() => handleOpenEdit(row.id)}>
                                                     Edit
                                                 </Button>
                                                 <Button variant="contained" color="secondary">
@@ -261,8 +267,39 @@ function CardList() {
                                             >
                                                 <Fade in={openEdit}>
                                                     <div className={classes.paper}>
-                                                        <h2 id="spring-modal-title">Cards</h2>
-                                                        <p id="spring-modal-description">react-spring animates me.</p>
+                                                        <form>
+                                                            <div className="mb-3">
+                                                                <label htmlFor="exampleCardName" className="form-label">Card name</label>
+                                                                <input type="text" className="form-control" value={row.card_name} id="exampleCardName" aria-describedby="emailHelp" />
+                                                            </div>
+                                                            
+                                                            <div className="mb-3">
+                                                                <label htmlFor="exampleCardNumber" className="form-label">Card number</label>
+                                                                <input type="number" className="form-control" value={row.card_number} id="exampleCardNumber" aria-describedby="emailHelp" />
+                                                            </div>
+                                                            <div className="mb-3">
+                                                                <label htmlFor="exampleType" className="form-label">Type</label>
+                                                                <select class="form-select form-select-lg"  style={{ padding: '6px', borderRadius: '3px', width: '100%', margin: '6px 0' }} aria-label=".form-select-lg example">
+                                                                    <option selected value={row.type}></option>
+                                                                    <option value="Visa">Visa</option>
+                                                                    <option value="Master">Master Card</option>
+                                                                </select>
+                                                            </div>
+                                                            <div className="mb-3" style={{ marginTop: '5px' }}>
+                                                                <label htmlFor="exampleExpireDate" className="form-label">Expire Date</label>
+                                                                <br />
+                                                                <TextField
+                                                                    id="expire_date"
+                                                                    type="date"
+                                                                    defaultValue="2017-05-24"
+                                                                    className={classes.textField}
+                                                                    InputLabelProps={{
+                                                                        shrink: true,
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                            <button type="submit" className="btn btn-primary" style={{ marginLeft: '50%', transform: 'translateX(-50%)', marginTop: '30px' }}>Add</button>
+                                                        </form>
                                                     </div>
                                                 </Fade>
                                             </Modal>

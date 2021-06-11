@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring';
+import TextField from '@material-ui/core/TextField';
 
 const columns = [
     { id: 'item', label: 'Item', minWidth: 50, align: 'center' },
@@ -189,8 +190,56 @@ function SubscriptionList() {
                     >
                         <Fade in={open}>
                             <div className={classes.paper}>
-                                <h2 id="spring-modal-title">Spring modal</h2>
-                                <p id="spring-modal-description">react-spring animates me.</p>
+                                <form>
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleInputEmail1" className="form-label">Item</label>
+                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    </div>
+                                    <div className="mb-3">
+                                    <label htmlFor="exampleInputEmail1" className="form-label">Plan</label>
+                                        <select class="form-select form-select-lg" style={{padding:'6px',borderRadius:'3px', width:'100%',margin:'6px 0'}} aria-label=".form-select-lg example">
+                                            <option selected>Select your plan</option>
+                                            <option value="1">Monthly</option>
+                                            <option value="2">Yearly</option>
+                                            <option value="3">Free</option>
+                                        </select>
+                                    </div>
+                                    <div className="mb-3">
+                                        <input type="hidden" name="isactive" value="true" />
+                                        </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleInputEmail1" className="form-label">Price</label>
+                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    </div>
+                                    <div className="mb-3">
+                                    <label htmlFor="exampleInputEmail1" className="form-label">Card</label>
+                                        <select class="form-select form-select-lg" style={{padding:'6px',borderRadius:'3px', width:'100%',margin:'6px 0'}} aria-label=".form-select-lg example">
+                                            <option selected>Select payment card</option>
+                                            <option value="1">41789234561243</option>
+                                            <option value="2">41789234561243</option>
+                                            <option value="3">41789234561243</option>
+                                        </select>
+                                    </div>
+                                    <div className="mb-3" style={{ marginTop: '5px',marginBottom:'5px' }}>
+                                        <label htmlFor="exampleInputEmail1" className="form-label">Subscription date</label>
+                                        <br />
+                                        <TextField
+                                            style={{width:"100%"}}
+                                            id="date"
+                                            type="date"
+                                            defaultValue="2017-05-24"
+                                            className={classes.textField}
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleInputEmail1" className="form-label">Website</label>
+                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    </div>
+                                    <button type="submit" className="btn btn-primary" style={{ marginLeft: '50%', transform: 'translateX(-50%)', marginTop: '30px' }}>Add</button>
+                                </form>
                             </div>
                         </Fade>
                     </Modal>
